@@ -46,8 +46,8 @@ class AppDatabaseTest {
             CachorrosEntidad(
                 id_appi ="197",
                 nombre = "cholita",
-                url_Cachorro = "https://caso-perritos-adopcion-c74apk0pl-talento-projects.vercel.app/animales"
-        )
+                url_Cachorro = "https://logo.clearbit.com/comcast.net"
+            )
         )
         miBaseDeDatos.CachorrosDao().insertarData(datos)
         // Recuperar el dato insertado

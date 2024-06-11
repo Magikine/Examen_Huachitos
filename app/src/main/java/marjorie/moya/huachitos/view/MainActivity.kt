@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         //Configurar el ViewModel
         var viewModelEmpresa = ViewModelProvider(this).get(CachorrosViewModel::class.java)
         //configurando el Loader
-        binding.listaCachorros.visibility = View.GONE
+        binding.listaDetalleCachorros.visibility = View.GONE
         binding.progressBar.visibility = View.VISIBLE
         //Configurar el RecyclerView
         binding.listaCachorros.layoutManager = LinearLayoutManager(this)

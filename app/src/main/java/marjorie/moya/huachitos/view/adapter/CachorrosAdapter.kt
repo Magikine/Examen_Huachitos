@@ -11,17 +11,17 @@ import marjorie.moya.huachitos.model.db.CachorrosEntidad
 import marjorie.moya.huachitos.view.DetalleCachorrosFragment
 
 
-class CachorrosAdapter(private val listaEmpresas: List<CachorrosEntidad>) :
-    RecyclerView.Adapter<CachorrosAdapter.EmpresaViewHolder>() {
+class CachorrosAdapter(private val listaDetalleCachorros: List<CachorrosEntidad>) :
+    RecyclerView.Adapter<CachorrosAdapter.CachorroViewHolder>() {
 
 
-    class EmpresaViewHolder(val binding: FilaListaCachorrosBinding) :
+    class CachorroViewHolder(val binding: FilaListaCachorrosBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmpresaViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CachorroViewHolder {
         val binding =
             FilaListaCachorrosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return EmpresaViewHolder(binding)
+        return CachorroViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -30,19 +30,19 @@ class CachorrosAdapter(private val listaEmpresas: List<CachorrosEntidad>) :
 
     }
 
-    override fun onBindViewHolder(holder: EmpresaViewHolder, position: Int) {
-        val cachorros   = listaCachorros[position]
-        holder.binding.txtnombe.text = cachorro.nombre
-        holder.binding.txtedad.text = cachorro.edad
-        holder.binding.txtregion.text = cachorro.region
+    override fun onBindViewHolder(holder: CachorroViewHolder, position: Int) {
+        val cachorros   = listaDetalleCachorros[position]
+        holder.binding.txtnombe.text = cachorros.nombre
+        holder.binding.txtedad.text = cachorros.edad
+        holder.binding.txtregion.text = cachorros.region
         //Imagen
         Picasso.get()
-            .load(cachorros.url_logo)
+            .load(cachorros.url_Cachorro)
             .placeholder(R.drawable.ic_launcher_background)
             .into(holder.binding.imagenLogo)
         //Configurar el click
         holder.binding.root.setOnClickListener {
-            var detalle = DetalleCachorrosFragment.newInstance(cachorro.id_api)
+            var detalle = DetalleCachorrosFragment.newInstance(cachorros.id)
             val activity = it.context as AppCompatActivity
             activity.supportFragmentManager.beginTransaction().replace(R.id.main, detalle)
                 .addToBackStack(null).commit()

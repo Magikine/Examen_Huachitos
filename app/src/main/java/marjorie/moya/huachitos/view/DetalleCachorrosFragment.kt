@@ -3,6 +3,7 @@ package marjorie.moya.huachitos.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Email
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,12 +67,12 @@ class DetalleCachorrosFragment: Fragment() {
 
 
             //Email
-            val  intent: Intent =Intent(Intent.ACTION_SEND)
-            intent.setType("text/html")
-            intent.putExtra(Intent.EXTRA_EMAIL, "ventas_botxcamps@gmail.com")
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
-            intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.")
-            startActivity(Intent.createChooser(intent, "Send Email"))
+            val  emailIntent: Intent =Intent(Intent.ACTION_SEND)
+            emailIntent.setType("text/html")
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, "ventas_botxcamps@gmail.com")
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "I'm email body.")
+            startActivity(Intent.createChooser(emailIntent, "Send Email"))
 
             //Enviar Email
             val intent = Intent(Intent.ACTION_SENDTO).apply {
