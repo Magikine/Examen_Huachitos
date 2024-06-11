@@ -74,17 +74,18 @@ class CachorrosViewModel : ViewModel() {
 
 
 
+
                                     //Agrego la empresa a la lista que voy a enviar a la base de datos
                                     listaCachorrosMapeada.add(cachorrosAGuardar)
                                 }
                                 GlobalScope.launch {
                                     //Vamos a vaciar la base de datos antes de insertar la nueva data
-                                    database.cachorrosDao().borrarDB()
+                                    database.CachorrosDao().borrarDB()
                                     //Vamos a hacer la insercion
-                                    database.cachorrosDao().insertarData(listaCachorrosMapeada)
+                                    database.CachorrosDao().insertarData(listaCachorrosMapeada)
                                     //Vamos a obtener las empresas
                                     listaCachorros.postValue(
-                                        database.cachorrosDao().obeterEmpresasDB()
+                                        database.CachorrosDao().obeterCachorrosDB()
                                     )
                                 }
                             }
@@ -97,6 +98,29 @@ class CachorrosViewModel : ViewModel() {
                             )
                         }
                     }
+
+                    private fun CachorrosEntidad(
+                        id_appi: String,
+                        nombre: String,
+                        edad: String,
+                        imagen: String,
+                        region: String,
+                        tipo: String,
+                        color: String,
+                        logo: String,
+                        estado: String,
+                        genero: String,
+                        desc_fisica: String,
+                        desc_personalidad: String,
+                        desc_adicional: String,
+                        esterilazado: Boolean,
+                        vacunas: String,
+                        equipo: String,
+                        comuna: String
+                    ) {
+
+                    }
+
 
                     //Metodo que se va a ejecuar si hay algun error
                     override fun onFailure(call: Call<List<CachorrosResponse>>, t: Throwable) {
@@ -124,7 +148,7 @@ class CachorrosViewModel : ViewModel() {
                 //Llamar API
                 val retroIntancia = RetrofitClass.retrofit.create(ApiService::class.java)
                 //quien va a llamar a la API
-                val llamadaApi = retroIntancia.detalleEmpresa(idEmpresa)
+                val llamadaApi = retroIntancia.detalleCachorros(idEmpresa)
                 //Llamar a la api para que nos devuelva los datos
                 llamadaApi.enqueue(object : Callback<CachorrosDetalleResponse> {
                     //Aca va la respuesta de la llamada de la API
@@ -162,5 +186,13 @@ class CachorrosViewModel : ViewModel() {
 
         }
     }
+
+    fun obtenerDetalleCachorros(idcachorros: Int) {
+
+    }
+
+}
+
+private fun <E> ArrayList<E>.add(element: Unit) {
 
 }

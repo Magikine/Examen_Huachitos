@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet.VISIBLE
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
@@ -36,14 +37,14 @@ class MainActivity : AppCompatActivity() {
         //Configurar el RecyclerView
         binding.listaCachorros.layoutManager = LinearLayoutManager(this)
         //Configurar el Adapter
-        var adaptadorEmpresas = CachorrosAdapter(listOf())
-        binding.listaCachorross.adapter = adaptadorEmpresas
+        var adaptadorCachorros = CachorrosAdapter(listOf())
+        binding.listaCachorros.adapter = adaptadorCachorros
         //Configurar el Observador
-        viewModelEmpresa.listaEmpresas.observe(
+        viewModelEmpresa.listaCachorros.observe(
             this
         ) { datosCachorros ->
-            adaptadorEmpresas = CachorrosAdapter(datosCachorros)
-            binding.listaCachorros.adapter = adaptadorEmpresas
+            adaptadorCachorros = CachorrosAdapter(datosCachorros)
+            binding.listaCachorros.adapter = adaptadorCachorros
             binding.listaCachorros.visibility = View.VISIBLE
             binding.progressBar.visibility = View.GONE
             //Vamos a configurar el Spinner

@@ -17,9 +17,9 @@ interface CachorrosDao {
 
     //Metodo para traer toda la informacion
     @Query("Select * from cachorros")
-    fun obeterEmpresasDB() : List<CachorrosEntidad>
+    fun obeterCachorrosDB() : List<CachorrosEntidad>
 
-    //Metodo para boorar toda la data
+    //Metodo para borrar toda la data
     @Query("DELETE FROM cachorros")
     fun borrarDB()
 }

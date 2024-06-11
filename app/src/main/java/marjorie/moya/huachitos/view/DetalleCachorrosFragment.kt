@@ -52,13 +52,13 @@ class DetalleCachorrosFragment: Fragment() {
         var viewModelCachorros = ViewModelProvider(this).get(CachorrosViewModel::class.java)
         //Configurar el Observador
         viewModelCachorros.detalleCachorros.observe(
-            this
+            viewLifecycleOwner
         ) { datosCachorros ->
             binding.txtnombe.text = datosCachorros.nombre
             binding.txtregion.text = datosCachorros.region
             Picasso.get().load(datosCachorros.logo).into(binding.imagenLogo)
         }
-        viewModelCachorros.errores.observe(this) {
+        viewModelCachorros.errores.observe(viewLifecycleOwner) {
             //
         }
         //Configurar el click del boton
@@ -66,7 +66,7 @@ class DetalleCachorrosFragment: Fragment() {
 
 
             //Email
-            val intent =Intent(Intent.ACTION_SEND)
+            val  intent: Intent =Intent(Intent.ACTION_SEND)
             intent.setType("text/html")
             intent.putExtra(Intent.EXTRA_EMAIL, "ventas_botxcamps@gmail.com")
             intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")

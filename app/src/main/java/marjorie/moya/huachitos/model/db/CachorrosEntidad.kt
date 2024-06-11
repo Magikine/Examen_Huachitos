@@ -28,7 +28,7 @@ data class CachorrosEntidad(
     val equipo: String,
     val region: String,
     val comuna: String,
-    val url_Cachorro: Any
+    val url_Cachorro: String
 ){
     override fun toString(): String {
         return this.nombre

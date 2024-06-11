@@ -25,18 +25,19 @@ class CachorrosAdapter(private val listaEmpresas: List<CachorrosEntidad>) :
     }
 
     override fun getItemCount(): Int {
+        val listaCachorros = 0
         return listaCachorros
 
     }
 
     override fun onBindViewHolder(holder: EmpresaViewHolder, position: Int) {
-        val empresa = listaCachorro[position]
+        val cachorros   = listaCachorros[position]
         holder.binding.txtnombe.text = cachorro.nombre
         holder.binding.txtedad.text = cachorro.edad
         holder.binding.txtregion.text = cachorro.region
         //Imagen
         Picasso.get()
-            .load(empresa.url_logo)
+            .load(cachorros.url_logo)
             .placeholder(R.drawable.ic_launcher_background)
             .into(holder.binding.imagenLogo)
         //Configurar el click

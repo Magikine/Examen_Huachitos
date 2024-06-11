@@ -6,13 +6,14 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
-    //Listado de empresas
-    @GET("empresas")
-    fun  obtenerEmpresas() : Call<List<CachorrosResponse>>
+    //Listado de cachorros
+    @GET("cachorros")
+    fun  obtenerCachorros() : Call<List<CachorrosResponse>>
 
-    //Detalle de empresas
-    @GET("empresas/{id_empresa}") //https://retoolapi.dev/cluuwe/empresas/9
-    fun detalleEmpresa(@Path("id_empresa") empresaCargar : Int): Call<CachorrosDetalleResponse>
+    //Detalle de cachorros
+    @GET("cachorros/{id}") //https://caso-perritos-adopcion-c74apk0pl-talento-projects.vercel.app/animales
+    fun detalleCachorros(@Path("id") cachorroCargar : Int): Call<CachorrosDetalleResponse>
+
 }
 
 

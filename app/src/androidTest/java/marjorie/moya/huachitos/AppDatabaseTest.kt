@@ -44,17 +44,17 @@ class AppDatabaseTest {
         val datos = ArrayList<CachorrosEntidad>()
         datos.add(
             CachorrosEntidad(
-                id_appi ="",
-                nombre = "",
-                url_Cachorro = "https://caso-perritos-adopcion-c74apk0pl-talento-projects.vercel.app/animales/",
-            )
+                id_appi ="197",
+                nombre = "cholita",
+                url_Cachorro = "https://caso-perritos-adopcion-c74apk0pl-talento-projects.vercel.app/animales"
+        )
         )
         miBaseDeDatos.CachorrosDao().insertarData(datos)
         // Recuperar el dato insertado
         val datoRecuperado =
-            miBaseDeDatos.CachorrosDao().obeterEmpresasDB()
+            miBaseDeDatos.CachorrosDao().obeterCachorrosDB()
         // Verificar que el dato recuperado sea el mismo que elinsertado
-        assertEquals("Morgan Stanley", datoRecuperado[0].nombre)
+        assertEquals("cholita", datoRecuperado[0].nombre)
     }
 
 }
