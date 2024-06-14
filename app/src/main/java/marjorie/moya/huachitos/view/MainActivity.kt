@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         //Configurar vista
         setContentView(binding.root)
         /**
-         * Configuraciones
+         * Configuraciones  .
          */
         //Configurar el ViewModel
         var viewModelAnimal = ViewModelProvider(this).get(AnimalViewModel::class.java)
