@@ -11,8 +11,8 @@ android {
 
     defaultConfig {
         applicationId = "marjorie.moya.huachitos"
-        minSdk = 25
-        targetSdk = 34
+        minSdk = 23
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
@@ -38,6 +38,8 @@ android {
     //Activando Binding
     viewBinding{
         enable = true
+
+
     }
 }
 
@@ -48,6 +50,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     //Agregando las depedencias

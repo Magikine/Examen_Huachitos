@@ -1,6 +1,5 @@
 package marjorie.moya.huachitos
 
-import marjorie.moya.huachitos.model.network.RetrofitClass
 import org.junit.Test
 
 import retrofit2.Retrofit

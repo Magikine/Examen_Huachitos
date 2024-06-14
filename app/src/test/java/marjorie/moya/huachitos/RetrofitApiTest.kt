@@ -2,17 +2,7 @@ package marjorie.moya.huachitos
 
 
 
-import marjorie.moya.huachitos.model.network.ApiService
-import marjorie.moya.huachitos.model.network.RetrofitClass
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
-
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Probando la Api de Retrofit

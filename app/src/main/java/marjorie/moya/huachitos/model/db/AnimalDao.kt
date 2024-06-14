@@ -1,7 +1,6 @@
 package marjorie.moya.huachitos.model.db
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -9,17 +8,17 @@ import androidx.room.Query
  * Dao que va a implementar todos los metodos que vamos a usar en esta app
  */
 @Dao
-interface CachorrosDao {
+interface AnimalDao {
 
     //Metodo para insertar toda la data
     @Insert
-    fun insertarData(cachorros : List<CachorrosEntidad>)
+    fun insertarData(animales : List<AnimalEntidad>)
 
     //Metodo para traer toda la informacion
-    @Query("Select * from cachorros")
-    fun obeterCachorrosDB() : List<CachorrosEntidad>
+    @Query("Select * from animales")
+    fun obeterAnimalesDB() : List<AnimalEntidad>
 
-    //Metodo para borrar toda la data
-    @Query("DELETE FROM cachorros")
+    //Metodo para boorar toda la data
+    @Query("DELETE FROM animales")
     fun borrarDB()
 }

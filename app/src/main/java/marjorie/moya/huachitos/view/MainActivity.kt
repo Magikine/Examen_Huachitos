@@ -1,21 +1,31 @@
 package marjorie.moya.huachitos.view
 
-import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet.VISIBLE
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import marjorie.moya.huachitos.R
 import marjorie.moya.huachitos.databinding.ActivityMainBinding
-import marjorie.moya.huachitos.view.adapter.CachorrosAdapter
-import marjorie.moya.huachitos.viewmodel.CachorrosViewModel
+import marjorie.moya.huachitos.view.adapter.AnimalAdapter
+import marjorie.moya.huachitos.viewmodel.AnimalViewModel
+
 
 class MainActivity : AppCompatActivity() {
     //Variable de Binding
@@ -30,29 +40,28 @@ class MainActivity : AppCompatActivity() {
          * Configuraciones
          */
         //Configurar el ViewModel
-        var viewModelEmpresa = ViewModelProvider(this).get(CachorrosViewModel::class.java)
+        var viewModelAnimal = ViewModelProvider(this).get(AnimalViewModel::class.java)
         //configurando el Loader
-        binding.listaDetalleCachorros.visibility = View.GONE
+        binding.listaAnimal.visibility = View.GONE
         binding.progressBar.visibility = View.VISIBLE
         //Configurar el RecyclerView
-        binding.listaCachorros.layoutManager = LinearLayoutManager(this)
+        binding.listaAnimal.layoutManager = LinearLayoutManager(this)
         //Configurar el Adapter
-        var adaptadorCachorros = CachorrosAdapter(listOf())
-        binding.listaCachorros.adapter = adaptadorCachorros
+        var adaptadorAnimal = AnimalAdapter(listOf())
+        binding.listaAnimal.adapter = adaptadorAnimal
         //Configurar el Observador
-        viewModelEmpresa.listaCachorros.observe(
+        viewModelAnimal.listaAnimales.observe(
             this
-        ) { datosCachorros ->
-            adaptadorCachorros = CachorrosAdapter(datosCachorros)
-            binding.listaCachorros.adapter = adaptadorCachorros
-            binding.listaCachorros.visibility = View.VISIBLE
+        ) { datosAnimal ->
+            adaptadorAnimal = AnimalAdapter(datosAnimal)
+            binding.listaAnimal.adapter = adaptadorAnimal
+            binding.listaAnimal.visibility = View.VISIBLE
             binding.progressBar.visibility = View.GONE
             //Vamos a configurar el Spinner
             val arrayAdapter: ArrayAdapter<*> =
-                ArrayAdapter<Any?>(this, android.R.layout.simple_spinner_item, datosCachorros)
-            binding.spinnerCachorros.adapter = arrayAdapter
-            binding.spinnerCachorros.onItemSelectedListener =
-                object : AdapterView.OnItemSelectedListener {
+                ArrayAdapter<Any?>(this, android.R.layout.simple_spinner_item, datosAnimal)
+            binding.spinnerAnimal.adapter = arrayAdapter
+            binding.spinnerAnimal.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {
                         // You can define your actions as you want
@@ -64,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                         position: Int,
                         p3: Long
                     ) {
-                        val selectedObject = datosCachorros.get(position)
+                        val selectedObject = datosAnimal.get(position)
                         Toast.makeText(
                             this@MainActivity,
                             "ID: ${selectedObject.id} Name: ${selectedObject.nombre}",
@@ -74,5 +83,19 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
         }
-    }
+
+viewModelAnimal.errores.observe(this) {
+    binding.listaAnimal.visibility = View.GONE
+    binding.progressBar.visibility = View.GONE
+    val builder = AlertDialog.Builder(this)
+    builder.setMessage(it)
+        .setPositiveButton("OK") { dialog, id ->
+            dialog.dismiss()
+        }
+    // Create the AlertDialog object and return it.
+    builder.create().show()
+}
+//Ejecucion desde el ViewModel
+viewModelAnimal.listarAnimales()
+}
 }
