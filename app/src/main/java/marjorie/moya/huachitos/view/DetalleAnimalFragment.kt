@@ -9,7 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
+import marjorie.moya.huachitos.databinding.FragmentDetalleAnimalBinding
 import marjorie.moya.huachitos.viewmodel.AnimalViewModel
+
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 
 
 private const val ID_ANIMAL = "idAnimal"
@@ -116,7 +121,7 @@ class DetalleAnimalFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param idAnimal Como el Id de la empresa.
+         * @param idEmpresa Como el Id de la empresa.
          * @return A new instance of fragment DatalleEmpresaFragment.
          */
         @JvmStatic

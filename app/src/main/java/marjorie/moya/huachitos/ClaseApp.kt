@@ -2,6 +2,7 @@ package marjorie.moya.huachitos
 
 import android.app.Application
 import androidx.room.Room
+import marjorie.moya.huachitos.model.db.AppDatabase
 
 
 class ClaseApp : Application() {

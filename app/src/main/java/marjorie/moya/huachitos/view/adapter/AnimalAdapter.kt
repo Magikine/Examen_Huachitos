@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import marjorie.moya.huachitos.R
 import marjorie.moya.huachitos.model.db.AnimalEntidad
-import marjorie.moya.huachitos.view.DetalleAnimalFragment
 import marjorie.moya.huachitos.databinding.FilaListaAnimalBinding
 class AnimalAdapter (private val listaAnimal: List<AnimalEntidad>) :
     RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>(){

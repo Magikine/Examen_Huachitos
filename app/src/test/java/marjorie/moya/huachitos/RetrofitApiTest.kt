@@ -2,6 +2,8 @@ package marjorie.moya.huachitos
 
 
 
+import marjorie.moya.huachitos.model.network.ApiService
+import marjorie.moya.huachitos.model.network.RetrofitClass
 import org.junit.Test
 
 /**
@@ -14,7 +16,7 @@ class RetrofitApiTest {
         //Get an instance of PlacesService by proiving the Retrofit instance
         val service = RetrofitClass.retrofit.create(ApiService::class.java)
         //Execute the API call
-        val response = service.detalleEmpresa(1).execute()
+        val response = service.detalleAnimal(1).execute()
         //Check for error body
         val errorBody = response.errorBody()
         assert(errorBody == null)
